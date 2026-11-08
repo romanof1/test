@@ -46,8 +46,21 @@ for g in geoms:
     if g.area < 0.08: continue
     others.append({'c': 'land', 'n': '', 'r': [[round(x, 3), round(y, 3)] for x, y in g.exterior.coords]})
     for hole in g.interiors:   # внутренние водоёмы (озёра) — как отдельный класс воды
-        if Polygon(hole).area > 0.3: others.append({'c': 'lake', 'n': '', 'r': [[round(x, 3), round(y, 3)] for x, y in hole.coords]})
+        if Polygon(hole).area > 0.3 and Polygon(hole).centroid.x < -50: others.append({'c': 'lake', 'n': '', 'r': [[round(x, 3), round(y, 3)] for x, y in hole.coords]})
+# Дыры в данных Старого Света (например, центральная Сахара в снимке 1600 г.) — заполняем нейтральной сушей
+allu = unary_union([Polygon(o['r']).buffer(0) for o in others if o['c'] != 'lake'])
+for g in (allu.geoms if isinstance(allu, MultiPolygon) else [allu]):
+    for hole in g.interiors:
+        hp = Polygon(hole)
+        if hp.centroid.x > -30 and hp.area > 0.05:
+            others.append({'c': 'land', 'n': '', 'r': [[round(x, 3), round(y, 3)] for x, y in hp.buffer(0.05).exterior.coords]})
 out = others
-open('src/geo.js', 'w').write('window.GEO=' + json.dumps(out, ensure_ascii=False, separators=(',', ':')) + ';\n')
+# Береговая линия = объединение всей суши (без перекрытий) — для маски моря и внутренней тени
+cu = unary_union([Polygon(o['r']).buffer(0) for o in out if o['c'] != 'lake'])
+coast = []
+for g in (cu.geoms if isinstance(cu, MultiPolygon) else [cu]):
+    coast.append([[round(x, 3), round(y, 3)] for x, y in g.exterior.coords])
+    coast += [[[round(x, 3), round(y, 3)] for x, y in h.coords] for h in g.interiors]
+open('src/geo.js', 'w').write('window.GEO=' + json.dumps(out, ensure_ascii=False, separators=(',', ':')) + ';\nwindow.COAST=' + json.dumps(coast, separators=(',', ':')) + ';\n')
 from collections import Counter
 print(len(out), Counter(o['c'] for o in out), sum(len(o['r']) for o in out), 'pts')

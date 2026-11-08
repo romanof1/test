@@ -34,6 +34,15 @@ function keys(t, ks, ease = easeInOut) {
   }
   return ks[ks.length - 1][1];
 }
+// кривая через ключи с непрерывной скоростью (кубический Эрмит, касательные по соседям)
+function keysSmooth(t, ks) {
+  const n = ks.length; if (t <= ks[0][0]) return ks[0][1]; if (t >= ks[n - 1][0]) return ks[n - 1][1];
+  let i = 1; while (ks[i][0] < t) i++;
+  const [t0, v0] = ks[i - 1], [t1, v1] = ks[i]; const h = t1 - t0, k = (t - t0) / h;
+  const m = j => (j <= 0 || j >= n - 1) ? 0 : (ks[j + 1][1] - ks[j - 1][1]) / (ks[j + 1][0] - ks[j - 1][0]);
+  const m0 = m(i - 1) * h, m1 = m(i) * h, k2 = k * k, k3 = k2 * k;
+  return (2 * k3 - 3 * k2 + 1) * v0 + (k3 - 2 * k2 + k) * m0 + (-2 * k3 + 3 * k2) * v1 + (k3 - k2) * m1;
+}
 // ---------- детерминированный случай ----------
 function rng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 function hash(n) { const r = rng(n * 7919 + 13); r(); return r(); }

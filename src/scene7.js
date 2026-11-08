@@ -12,7 +12,7 @@ const S7 = (() => {
     const k = seg(t, 50.7, 52.6), e = easeOut(k);
     const v = { lon: -72.6, lat: 40.6, z: lerp(7.5, 2.2, e), r: 0, squash: 0 };
     const p = seg(t, 53.4, 56.4), pe = easeInOut(p);
-    v.lon = lerp(v.lon, -34, pe); v.lat = lerp(v.lat, 44.5, pe); v.z = lerp(v.z, .54, pe); v.squash = .2 * pe; v.r = -4 * pe;   // та же наклонная карта, что в 002
+    v.lon = lerp(v.lon, -39, pe); v.lat = lerp(v.lat, 44.0, pe); v.z = lerp(v.z, .47, pe); v.squash = .2 * pe; v.r = -4 * pe;   // та же наклонная карта, что в 002
     v.lon += .4 * seg(t, 56.4, 58); v.z *= 1 + .02 * seg(t, 56.4, 58);   // финальный медленный дрейф
     return v;
   }
@@ -66,7 +66,7 @@ const S7 = (() => {
     const rk = seg(t, 54.2, 55.8);
     if (rk > 0) { ctx.save(); ctx.setLineDash([14, 12]); ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(255,255,255,.8)'; ctx.beginPath(); for (let i = 0; i <= 60 * rk; i++) { const k = i / 60; const lon = lerp(-4.2, -70.4, k), lat = lerp(50.4, 41.9, k) + Math.sin(k * Math.PI) * 7; const [x, y] = mapToScreen(v, lon, lat); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); ctx.restore(); }
     const la = seg(t, 54.6, 55.3);
-    if (la > 0) { ctx.save(); ctx.globalAlpha = la; const zr = clamp(v.z / .58, .6, 1.4);
+    if (la > 0) { ctx.save(); ctx.globalAlpha = la; const zr = clamp(v.z / .5, .6, 1.4);
       let [x, y] = mapToScreen(v, -76.0, 39.6); countryLabel(ctx, 'Колонии', x, y, 40 * zr, { rot: v.r - 52, color: 'rgba(255,255,255,.75)' });
       [x, y] = mapToScreen(v, -2, 52.6); countryLabel(ctx, 'Англия', x, y, 30 * zr, { rot: v.r - 8 });
       [x, y] = mapToScreen(v, -38, 41); seaLabel(ctx, 'Атлантический океан', x, y, 46 * zr, { rot: v.r - 4 });

@@ -14,7 +14,9 @@ function mapInit() {
     all.addPath(p); if (f.c !== 'land') states.addPath(p);
     (byClass[f.c] = byClass[f.c] || new Path2D()).addPath(p);
   }
-  const sea = new Path2D(); sea.rect(-20000, -20000, 40000, 40000); sea.addPath(all);
+  // маска моря из объединённой береговой линии: перекрытия исходных полигонов не превращаются в «воду»
+  const sea = new Path2D(); sea.rect(-20000, -20000, 40000, 40000);
+  for (const r of window.COAST) r.forEach((q, i) => { const [x, y] = proj(q[0], q[1]); i ? sea.lineTo(x, y) : sea.moveTo(x, y); }), sea.closePath();
   MAP = { all, states, byClass, sea, lakes };
   return MAP;
 }

@@ -72,7 +72,7 @@ const S4 = (() => {
       [x, y] = mapToScreen(v, PLY[0], PLY[1]); cityMarker(ctx, x, y, seg(t, 29.8, 30.55), { size: 'large', label: 'Плимут', sub: '1620', dx: 26, dy: -58, fs: 40, align: 'left' });
       ctx.restore(); }
     // нырок: темнеет до ночного моря сцены 005, радиальный blur как акцент
-    const dv = seg(t, 31.15, 31.5); if (dv > 0) { ctx.fillStyle = `rgba(44,53,80,${easeIn(dv)})`; ctx.fillRect(0, 0, W, H); }
+    const dv = seg(t, 31.15, 31.5); if (dv > 0) { ctx.fillStyle = `rgba(44,53,80,${.9 * easeIn(seg(dv, .25, 1))})`; ctx.fillRect(0, 0, W, H); }
   }
   function people(ctx, t) {
     // вербовщик (2-й план) указывает на лист; двое слушателей (3-й план)

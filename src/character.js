@@ -56,7 +56,7 @@ function drawChar(ctx, x, y, R, o) {
   if (o.flip) ctx.scale(-1, 1);      // отражается вся иерархия целиком
   if (o.alpha != null) ctx.globalAlpha *= o.alpha;
   // контактная тень
-  contactShadow(ctx, 0, 0, R * 1.05, .2);
+  if (!o.noShadow) contactShadow(ctx, 0, 0, R * 1.05, .2);
   const bob = (pose.bob || 0) * R;
   ctx.translate(0, -bob);
   const hipY = -1.45 * R, neckY = -3.15 * R;
