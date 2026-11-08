@@ -1,0 +1,34 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Лист персонажей</title>
+<style>@font-face{font-family:"PT Serif";font-weight:700;src:url(../assets/fonts/PTSerif-Bold.ttf)}@font-face{font-family:"PT Serif";font-weight:400;src:url(../assets/fonts/PTSerif-Regular.ttf)}body{margin:0}</style></head><body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script src="core.js"></script><script src="character.js"></script>
+<script>
+// Канонический лист: строится тем же ригом, что и ролик (§5.5). Новые позы — только от этого набора.
+window.READY = document.fonts.load('700 20px "PT Serif"').then(() => {
+  const c = document.getElementById('c').getContext('2d');
+  c.fillStyle = COL.paper; c.fillRect(0, 0, W, H);
+  const box = (x, y, w, h, title) => { outlined(c, rrPath(x, y, w, h, 14), '#F7EFE2', 3, COL.frame); outlined(c, rrPath(x + 10, y + 10, w - 20, 44, 8), COL.paper2, 0); text(c, title, x + 24, y + 33, { size: 26, align: 'left' }); };
+  text(c, 'Ведущий — канонический набор (XVII в.)', 60, 50, { size: 40, align: 'left' });
+  text(c, 'Облик концепта №3 (волосы, лицо, пропорции ≈ 2,6 головы, палитра); костюм: дублет с баской, отложной воротник, бриджи, сапоги с отворотом', 60, 92, { size: 20, weight: 400, align: 'left', color: COL.accent });
+  box(40, 120, 1000, 470, 'Ракурсы: анфас · 3/4 · профиль · спина');
+  [['front', 1], ['q', 1], ['side', 1], ['back', 1]].forEach(([v, f], i) => drawChar(c, 170 + i * 240, 565, 66, { outfit: OUTFIT.narrator, view: v, f, pose: basePose() }));
+  box(1060, 120, 820, 470, 'Позы и жесты');
+  const pts = [
+    { ...basePose(), armR: { sh: 85, el: 8, hand: 'point' } },
+    { ...basePose(), armL: { sh: 18, el: 128 }, armR: { sh: 18, el: 134 } },
+    { ...basePose(), armR: { sh: 30, el: 70, prop: PROPS.scroll } },
+    walkPose(.25, 1),
+  ];
+  pts.forEach((p, i) => drawChar(c, 1160 + i * 200, 565, 58, { outfit: OUTFIT.narrator, view: i === 0 || i === 3 ? 'q' : 'front', f: 1, pose: p }));
+  box(40, 610, 1000, 430, 'Эмоции');
+  const em = [{}, { mouth: 'smile' }, { brows: 'angry', mouth: 'frown' }, { mouth: 'shout', brows: 'angry' }, { brows: 'sad', mouth: 'frown' }, { eyes: 'closed' }, { talk: .8 }];
+  em.forEach((f, i) => { c.save(); c.translate(115 + i * 138, 1000); drawChar(c, 0, 0, 52, { outfit: OUTFIT.narrator, view: 'front', pose: basePose(), face: f }); c.restore(); });
+  box(1060, 610, 820, 430, '2-й и 3-й план: король, стража, толпа');
+  drawChar(c, 1170, 990, 54, { outfit: OUTFIT.king, view: 'front', pose: basePose() });
+  drawChar(c, 1310, 990, 46, { outfit: OUTFIT.guard, view: 'q', f: -1, pose: basePose() });
+  drawChar(c, 1430, 990, 46, { outfit: OUTFIT.captain, view: 'q', f: 1, pose: basePose() });
+  [0, 1, 2, 3, 4].forEach(i => drawChar(c, 1540 + i * 72, 990, 30, { outfit: crowdOutfit(i), view: 'front', pose: basePose() }));
+  text(c, `нарушений суставов: ${RIG_LOG.violations}`, 1860, 1062, { size: 16, weight: 400, align: 'right', color: '#7A6A5A' });
+  return true;
+});
+</script></body></html>

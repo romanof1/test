@@ -1,0 +1,21 @@
+id: narrator
+name: "Ведущий"
+tier: 1
+role: "Рассказчик в кадре (решение пользователя); проходит через сцены 001, 003, 004, 005, 006, 007"
+canonical_refs:
+  - refs/narrator_sheet.png        # генерируется из рига: node src/tools/shot.mjs src/refsheet.html bible/characters/refs/narrator_sheet.png
+  - ../../references/Концепт основного персонажа.png   # исходный концепт №3 (облик, пропорции, палитра)
+constant:                           # постоянные признаки — не меняются ни в одной сцене
+  silhouette: "чиби ≈ 2,6 головы, крупная круглая голова, объёмные каштановые кудри, закрывающие затылок"
+  face: "лицо цвета слоновой кости, глаза — вертикальные овалы, рот — короткая линия; брови только при эмоции; носа нет"
+  hands: "белые «рукавички» с большим пальцем; отдельный спрайт указующего жеста"
+  palette: { hair: "#6E4A32", skin: "#FBF6EC", doublet: "#2E3530", vest: "#8A2E2A", trim: "#E0A84A", collar: "#EFE3CF", legs: "#3B2A20", boots: "#3B2A20" }
+outfit_17c:                         # что изменено относительно концепта (XVIII в. → XVII в.)
+  - "камзол → дублет с баской и галуном по подолу"
+  - "жабо → отложной воротник (falling band)"
+  - "сапоги с отворотом"
+headwear: null                      # без головного убора — нет риска «убора задом наперёд»
+views: [front, q, side, back]
+emotions: [neutral, smile, frown, shout, sad, closed_eyes, talk]
+gestures: [point, arms_crossed, hold_scroll, walk]
+rig_limits: "elbow 0…145 (вперёд), knee 0…140 (назад), shoulder −60…170, neck ±30, torso ±15 — clamp в src/character.js, нарушения считаются в RIG_LOG"

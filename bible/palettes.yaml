@@ -22,12 +22,8 @@ ui:
   gold: "#E0A84A"
 
 characters:
-  settler:           # 1-й план, кандидат — см. storyboard, каст не подтверждён
-    hair: "#6E4A32"
-    skin: "#FBF6EC"
-    doublet: "#4E4A3A"   # будничная одежда — землистые тона, не «всё чёрное»
-    collar: "#EFE3CF"
-    hat: "#2E2A26"
-    breeches: "#3B2A20"
+  narrator: { hair: "#6E4A32", skin: "#FBF6EC", doublet: "#2E3530", vest: "#8A2E2A", trim: "#E0A84A", collar: "#EFE3CF", legs: "#3B2A20" }
+  king: { robe: "#7A3B2A", ermine: "#F4EFE6", crown: "#E0A84A" }
+  ireland: "#EE7468"   # Королевство Ирландия под английской короной — оттенок сюзерена (§7.3)
   crowd_tier3: ["#5E6E8A", "#6E6A5A", "#7A5E4A", "#5A6A5E", "#E9D8BE"]
   sea_night: "#2C3550"
