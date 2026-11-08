@@ -1,0 +1,33 @@
+# Палитры фрагмента. Войны в сюжете нет — красный/синий «агрессор/жертва» не применяется.
+
+map:
+  sea: "#5E5E5E"          # один вариант моря на весь ролик
+  grid: "#4A4A4A"
+  land_neutral: "#FFFFFF"
+  border: "#111111"
+  states:
+    england:   { color: "#D9443B", label: "Англия" }
+    colonies:  { color: "#FF6A5E", label: "Колонии", note: "оттенок сюзерена, +lightness (§7.3)" }
+    france:    { color: "#E8D27A", label: "Франция" }
+    spain:     { color: "#9BC59B", label: "Испания" }
+    netherlands: { color: "#D9A7C7", label: "Нидерланды" }
+    scotland:  { color: "#FFFFFF", label: "Шотландия", note: "до 1707 г. отдельное королевство, личная уния" }
+
+ui:
+  paper: "#F3E9D8"
+  paper_dark: "#EADBC2"
+  frame: "#C9B79C"
+  ink: "#2B211B"
+  accent: "#8A2E2A"
+  gold: "#E0A84A"
+
+characters:
+  settler:           # 1-й план, кандидат — см. storyboard, каст не подтверждён
+    hair: "#6E4A32"
+    skin: "#FBF6EC"
+    doublet: "#4E4A3A"   # будничная одежда — землистые тона, не «всё чёрное»
+    collar: "#EFE3CF"
+    hat: "#2E2A26"
+    breeches: "#3B2A20"
+  crowd_tier3: ["#5E6E8A", "#6E6A5A", "#7A5E4A", "#5A6A5E", "#E9D8BE"]
+  sea_night: "#2C3550"
