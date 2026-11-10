@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Память семьи — пока есть у кого спросить</title>
+<meta name="description" content="Ученики Коммунаровской средней школы записывают воспоминания бабушек, дедушек и старожилов агрогородка и собирают их в книгу «Память семьи».">
+<meta name="theme-color" content="#F3ECDD">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Golos+Text:wght@400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3ECDD; --paper-2:#EAE0CC; --card:#FFFBF2; --ink:#231C17; --ink-2:#5B5047; --line:#D8CAB1;
+  --red:#9B2318; --red-dark:#74170F; --red-soft:#F1DDD5; --sepia:#8A6E4F; --night:#1E1814; --cream:#F5EBD8;
+  --serif:"Prata","Times New Roman",serif; --sans:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif; --hand:"Caveat","Segoe Script",cursive;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .15 0 0 0 0 .1 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.33'/%3E%3C/svg%3E");
+  --ornament:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='28' viewBox='0 0 64 28'%3E%3Cg fill='%239B2318'%3E%3Cpath d='M32 0l14 14-14 14-14-14z'/%3E%3Cpath d='M0 8l6 6-6 6zM64 8l-6 6 6 6z'/%3E%3Cpath d='M9 11h3v6H9zM52 11h3v6h-3z'/%3E%3C/g%3E%3Cg fill='%23F3ECDD'%3E%3Cpath d='M32 6l8 8-8 8-8-8z'/%3E%3C/g%3E%3Cg fill='%239B2318'%3E%3Cpath d='M32 10l4 4-4 4-4-4z'/%3E%3Cpath d='M30 1h4v3h-4zM30 24h4v3h-4z' opacity='0'/%3E%3C/g%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:var(--grain);opacity:.5;pointer-events:none;z-index:1;mix-blend-mode:multiply}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{width:min(1140px,100% - 40px);margin-inline:auto;position:relative;z-index:2}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;text-wrap:balance}
+h2{font-size:clamp(32px,4.6vw,56px);letter-spacing:-.01em}
+h3{font-size:24px;line-height:1.2}
+.hand{font-family:var(--hand);font-weight:500;font-size:26px;line-height:1.15;color:var(--red)}
+.kicker{font-family:var(--hand);font-size:28px;color:var(--red);line-height:1;margin-bottom:10px;display:inline-block;rotate:-2deg}
+.lead{font-size:clamp(18px,1.6vw,20px);color:var(--ink-2);max-width:60ch}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px;z-index:100}
+.skip:focus{left:12px}
+section{padding:clamp(72px,10vw,128px) 0;position:relative}
+
+/* шапка */
+header{position:sticky;top:0;z-index:50;background:rgba(243,236,221,.86);backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2);border-bottom:1px solid transparent;transition:border-color .25s}
+header.scrolled{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;height:68px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--serif);font-size:21px;line-height:1}
+.logo svg{width:34px;height:34px;flex:none}
+.logo small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin-top:5px;font-weight:600}
+.menu{display:flex;align-items:center;gap:2px;list-style:none}
+.menu a{display:block;text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-2);padding:9px 12px;border-radius:999px;transition:color .2s,background .2s}
+.menu a:hover{color:var(--red);background:var(--red-soft)}
+.menu .go{background:var(--ink);color:var(--paper);margin-left:8px;padding:10px 18px}
+.menu .go:hover{background:var(--red);color:#fff}
+.burger{display:none;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:transparent;place-items:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;position:relative;transition:transform .25s var(--ease),background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded=true] span{background:transparent}
+.burger[aria-expanded=true] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded=true] span::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:960px){
+  .burger{display:grid}
+  .menu{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--paper);border-bottom:1px solid var(--line);padding:10px 20px 20px;display:none}
+  .menu.open{display:flex}
+  .menu a{padding:13px 12px;font-size:17px}
+  .menu .go{margin:8px 0 0;text-align:center}
+}
+
+/* кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;border:1.5px solid transparent;font-weight:600;font-size:16px;text-decoration:none;cursor:pointer;transition:transform .2s var(--ease),background .2s,color .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.96)}
+.btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 10px 24px -8px rgba(155,35,24,.55)}
+.btn-red:hover{background:var(--red-dark)}
+.btn-line{border-color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:var(--paper)}
+
+/* «фотографии» */
+.photo{background:#FBF6EA;padding:10px 10px 12px;box-shadow:0 1px 2px rgba(35,28,23,.15),0 22px 44px -14px rgba(35,28,23,.4);position:relative}
+.photo .ph{aspect-ratio:var(--ar,4/5);overflow:hidden;background:#b9a180;position:relative}
+.photo .ph svg,.photo .ph img{width:100%;height:100%;object-fit:cover;filter:sepia(.55) contrast(.95)}
+.photo .ph::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(40,26,14,.42)),var(--grain);mix-blend-mode:multiply;pointer-events:none}
+.photo figcaption{font-family:var(--hand);font-size:22px;line-height:1.1;color:#4a3d33;text-align:center;padding-top:8px}
+.tape{position:absolute;width:92px;height:26px;background:rgba(226,205,160,.78);top:-12px;left:50%;translate:-50% 0;rotate:-3deg;box-shadow:0 1px 2px rgba(0,0,0,.12);clip-path:polygon(0 0,4% 50%,0 100%,100% 100%,96% 50%,100% 0)}
+
+/* первый экран */
+.hero{padding:clamp(40px,6vw,84px) 0 clamp(64px,8vw,104px);overflow:clip}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,72px);align-items:center}
+.hero h1{font-size:clamp(44px,7.4vw,98px);letter-spacing:-.02em;line-height:1.02;margin:6px 0 26px}
+.hero h1 em{font-style:normal;color:var(--red);position:relative;white-space:nowrap}
+.hero h1 em svg{position:absolute;left:-2%;bottom:-.16em;width:104%;height:.3em;overflow:visible}
+.hero h1 em path{fill:none;stroke:var(--red);stroke-width:5;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.js-motion .hero h1 em path{stroke-dasharray:1;stroke-dashoffset:1}
+.js-motion .hero h1 em path.draw{animation:draw .9s var(--ease) .8s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero .lead{margin-bottom:34px}
+.actions{display:flex;flex-wrap:wrap;gap:14px}
+.proj{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-2);max-width:52ch}
+.proj b{color:var(--ink);font-weight:600}
+.album{position:relative;height:clamp(420px,46vw,580px)}
+.float{position:absolute}
+.f1{width:46%;left:0;top:3%;rotate:-7deg;z-index:2}
+.f2{width:43%;right:1%;top:0;rotate:5deg;z-index:1}
+.f3{width:47%;left:22%;bottom:0;rotate:-2deg;z-index:3}
+.f2 .photo{--ar:1/1}.f3 .photo{--ar:5/4}
+.note{position:absolute;right:0;bottom:9%;z-index:4;font-family:var(--hand);font-size:25px;line-height:1.1;color:var(--red);rotate:-8deg;text-align:center;max-width:150px}
+.note svg{width:56px;height:36px;margin:0 auto 2px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.photo{transition:transform .35s var(--ease),box-shadow .35s}
+.float:hover{z-index:5}
+.float:hover .photo{transform:scale(1.04) rotate(1.2deg)}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.album{max-width:520px;width:100%;margin-inline:auto;height:clamp(380px,96vw,520px)}}
+
+.band{height:28px;background:var(--ornament) repeat-x center/64px 28px;position:relative;z-index:2}
+
+/* зачем */
+.why{background:var(--night);color:var(--cream)}
+.why::before{content:"";position:absolute;inset:0;background:var(--grain);opacity:.35;mix-blend-mode:screen}
+.why .kicker{color:#E8A995}
+.why-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,6vw,88px);align-items:start}
+.why h2{font-size:clamp(34px,5.2vw,68px);line-height:1.1}
+.why h2 span{color:#E8A995}
+.why .lead{color:rgba(245,235,216,.72);margin-top:26px}
+.sticky{position:sticky;top:110px}
+.cards{display:grid;gap:22px}
+.idx{background:var(--cream);color:var(--ink);padding:26px 28px 28px;position:relative;box-shadow:0 24px 50px -20px rgba(0,0,0,.7);background-image:linear-gradient(transparent 0 46px,rgba(155,35,24,.35) 46px 47px,transparent 47px),repeating-linear-gradient(transparent 0 31px,rgba(35,28,23,.1) 31px 32px);background-position:0 0,0 46px}
+.idx:nth-child(1){rotate:-1.6deg}.idx:nth-child(2){rotate:1.2deg;margin-left:clamp(0px,3vw,36px)}.idx:nth-child(3){rotate:-.8deg}
+.idx small{font-family:var(--hand);font-size:24px;color:var(--red);display:block;line-height:1;margin-bottom:16px}
+.idx h3{margin-bottom:8px}
+.idx p{color:var(--ink-2);font-size:16px;line-height:1.6}
+@media (max-width:900px){.why-grid{grid-template-columns:1fr}.sticky{position:static}}
+
+/* как это будет */
+.head{max-width:760px;margin-bottom:clamp(40px,6vw,72px)}
+.head .lead{margin-top:18px}
+.path{position:relative}
+.thread{position:absolute;left:50%;top:0;bottom:0;width:120px;translate:-50% 0;height:100%;overflow:visible}
+.thread path{fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.thread .bg{stroke:var(--line);stroke-width:2;stroke-dasharray:2 9}
+.thread .fg{stroke:var(--red);stroke-width:3}
+.stops{list-style:none;display:grid;gap:clamp(28px,5vw,56px);position:relative}
+.stop{display:grid;grid-template-columns:1fr 120px 1fr;align-items:center}
+.stop .txt{grid-column:1;text-align:right;padding-right:12px}
+.stop:nth-child(even) .txt{grid-column:3;text-align:left;padding:0 0 0 12px}
+.stop .dot{grid-column:2;grid-row:1;justify-self:center;width:58px;height:58px;border-radius:50%;background:var(--paper);border:2px solid var(--red);display:grid;place-items:center;font-family:var(--serif);font-size:24px;color:var(--red);box-shadow:0 0 0 8px var(--paper)}
+.stop h3{font-size:clamp(24px,2.6vw,32px);margin-bottom:8px}
+.stop p{color:var(--ink-2);max-width:42ch;display:inline-block}
+.stop .aside{grid-column:3;grid-row:1;font-family:var(--hand);font-size:25px;line-height:1.15;color:var(--sepia);padding-left:28px;rotate:-2deg;max-width:280px}
+.stop:nth-child(even) .aside{grid-column:1;text-align:right;padding:0 28px 0 0;justify-self:end;rotate:2deg}
+@media (max-width:820px){
+  .thread{left:29px;width:58px}
+  .stop,.stop:nth-child(even){grid-template-columns:58px 1fr;column-gap:20px;align-items:start}
+  .stop .dot{grid-column:1}
+  .stop .txt,.stop:nth-child(even) .txt{grid-column:2;grid-row:1;text-align:left;padding:8px 0 0}
+  .stop .aside,.stop:nth-child(even) .aside{grid-column:2;grid-row:2;text-align:left;padding:8px 0 0;justify-self:start;rotate:-1deg}
+}
+
+/* о чём спросить */
+.ask{background:var(--paper-2)}
+.ask-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,80px);align-items:center}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0}
+.tab{min-height:44px;padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:transparent;font-weight:500;font-size:15px;transition:background .2s,border-color .2s,color .2s,transform .15s}
+.tab:hover{border-color:var(--ink)}
+.tab:active{transform:scale(.95)}
+.tab[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.deck{position:relative;min-height:340px}
+.deck::before,.deck::after{content:"";position:absolute;inset:0;background:var(--card);border:1px solid var(--line);border-radius:6px}
+.deck::before{rotate:3.5deg;translate:10px 8px}.deck::after{rotate:-2.5deg;translate:-6px 4px}
+.qcard{position:relative;z-index:1;background:var(--card);border:1px solid var(--line);border-radius:6px;min-height:340px;padding:clamp(26px,4vw,44px);display:flex;flex-direction:column;box-shadow:0 30px 60px -30px rgba(35,28,23,.5)}
+.qcard .cat{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.qcard .qt{font-family:var(--hand);font-weight:500;font-size:clamp(32px,4.2vw,46px);line-height:1.1;margin:auto 0;padding:22px 0}
+.qcard .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+.qcard .cnt{font-size:14px;color:var(--ink-2)}
+@media (max-width:900px){.ask-grid{grid-template-columns:1fr}}
+
+/* проверь себя */
+.quiz-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,80px);align-items:start}
+.quiz{border-top:2px solid var(--ink)}
+.q{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
+.q p{font-size:18px;font-weight:500;line-height:1.4}
+.yn{display:flex;gap:8px;flex:none}
+.yn button{min-width:68px;min-height:46px;border-radius:999px;border:1.5px solid var(--line);background:transparent;font-weight:600;font-size:15px;transition:background .2s,border-color .2s,color .2s,transform .15s}
+.yn button:hover{border-color:var(--ink)}
+.yn button:active{transform:scale(.94)}
+.yn button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.yn button.n[aria-pressed=true]{background:var(--red);border-color:var(--red);color:#fff}
+.quiz-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:26px}
+.err{color:var(--red-dark);font-weight:600;font-size:15px;min-height:22px}
+.result{display:none;margin-top:24px;padding:26px 28px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red)}
+.result.show{display:block}
+.result h3{margin-bottom:8px}
+.result p{color:var(--ink-2)}
+@media (max-width:900px){.quiz-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.q{flex-direction:column;align-items:flex-start}}
+
+/* что останется */
+.keep{background:var(--paper-2)}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.cell{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:clamp(22px,3vw,34px);overflow:hidden;position:relative;display:flex;flex-direction:column;gap:10px;min-height:300px;transition:transform .35s var(--ease),box-shadow .35s}
+.cell:hover{transform:translateY(-5px);box-shadow:0 30px 50px -30px rgba(35,28,23,.45)}
+.cell p{color:var(--ink-2);font-size:16px;max-width:38ch}
+.cell .art{margin-top:auto;padding-top:18px}
+.c-book{grid-column:span 4;background:var(--red);color:#fff;border-color:var(--red)}
+.c-book p{color:rgba(255,255,255,.85)}
+.c-voice{grid-column:span 2}
+.c-map{grid-column:span 3}
+.c-museum{grid-column:span 3;background:var(--night);color:var(--cream);border-color:var(--night)}
+.c-museum p{color:rgba(245,235,216,.72)}
+.book{position:absolute;right:clamp(-30px,2vw,36px);bottom:-46px;width:min(250px,44%);aspect-ratio:3/4;background:var(--cream);color:var(--ink);rotate:8deg;border-radius:3px 8px 8px 3px;box-shadow:-10px 14px 0 -4px #e2d3b6,-18px 26px 40px rgba(0,0,0,.4);padding:22px 18px;display:flex;flex-direction:column;justify-content:space-between;border-left:10px solid #5d130c;transition:rotate .5s var(--ease),translate .5s var(--ease)}
+.c-book:hover .book{rotate:3deg;translate:0 -14px}
+.book b{font-family:var(--serif);font-weight:400;font-size:clamp(20px,2.4vw,30px);line-height:1.1}
+.book i{display:block;height:22px;background:var(--ornament) repeat-x left/50px 22px}
+.book small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.c-book>h3,.c-book>p{max-width:min(48%,34ch);position:relative}
+.wave{display:flex;align-items:center;gap:4px;height:64px}
+.wave i{flex:1;background:var(--red);border-radius:3px;height:calc(var(--h)*1%);transform-origin:center;animation:wave 1.6s ease-in-out infinite;animation-delay:calc(var(--i)*-.11s);animation-play-state:paused}
+.cell:hover .wave i,.cell:focus-within .wave i{animation-play-state:running}
+@keyframes wave{50%{transform:scaleY(.35)}}
+.qrrow{display:flex;align-items:center;gap:14px;margin-top:16px;font-size:14px;color:var(--ink-2);line-height:1.35}
+.qr{width:58px;height:58px;flex:none;background:var(--ink);--d:conic-gradient(var(--card) 0 0);mask:none;border-radius:4px;padding:6px}
+.qr svg{width:100%;height:100%}
+.mapsvg{width:100%;height:auto;border-radius:6px;background:#EDE3CD}
+.pin{transform-box:fill-box;transform-origin:50% 100%;animation:pin 2.6s var(--ease) infinite;animation-delay:calc(var(--i)*.35s)}
+@keyframes pin{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-7px)}}
+.shelf{display:flex;align-items:flex-end;gap:6px;height:96px;border-bottom:4px solid #6b5846}
+.shelf i{width:calc(var(--w)*1px);height:calc(var(--h)*1%);background:var(--c,#C9B48E);border-radius:2px 2px 0 0;transition:transform .35s var(--ease)}
+.cell:hover .shelf i:nth-child(3n){transform:translateY(-8px)}
+@media (max-width:900px){.bento{grid-template-columns:1fr}.cell{grid-column:auto!important}.c-book>h3,.c-book>p{max-width:100%}.c-book{padding-bottom:230px}.book{right:24px;width:170px}}
+
+/* когда */
+.seasons{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink);position:relative}
+.seasons::before{content:"";position:absolute;top:-2px;left:0;height:2px;width:var(--progress,0%);background:var(--red);transition:width 1.2s var(--ease)}
+.season{padding:26px 22px 0 0;position:relative}
+.season::before{content:"";position:absolute;top:-9px;left:0;width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--ink)}
+.season.done::before{background:var(--red);border-color:var(--red)}
+.season.now::before{border-color:var(--red);box-shadow:0 0 0 6px var(--red-soft)}
+.season .when{font-family:var(--serif);font-size:clamp(24px,2.6vw,32px);line-height:1.1}
+.season .state{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin:10px 0 8px}
+.season.now .state{color:var(--red)}
+.season p{color:var(--ink-2);font-size:16px;max-width:28ch}
+@media (max-width:820px){.seasons{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--ink);padding-left:0}.seasons::before{display:none}.season{padding:0 0 30px 28px}.season::before{top:6px;left:-9px}}
+
+/* истории */
+.spread{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2.4vw,28px);align-items:start}
+.slot{position:relative;padding:10px;text-align:center;transition:transform .35s var(--ease)}
+.slot:nth-child(odd){rotate:-1.5deg}.slot:nth-child(even){rotate:1.3deg;margin-top:26px}
+.slot:hover{transform:translateY(-6px) rotate(.6deg)}
+.slot .hole{aspect-ratio:4/5;border:1.5px dashed #B9A683;display:grid;place-items:center;padding:16px;font-family:var(--hand);font-size:24px;line-height:1.15;color:var(--sepia);background:rgba(255,251,242,.5)}
+.slot::before,.slot::after,.slot .hole::before,.slot .hole::after{content:"";position:absolute;width:26px;height:26px;background:var(--ink);z-index:1}
+.slot::before{top:4px;left:4px;clip-path:polygon(0 0,100% 0,0 100%)}
+.slot::after{top:4px;right:4px;clip-path:polygon(0 0,100% 0,100% 100%)}
+.slot .hole::before{bottom:38px;left:4px;clip-path:polygon(0 0,0 100%,100% 100%)}
+.slot .hole::after{bottom:38px;right:4px;clip-path:polygon(100% 0,0 100%,100% 100%)}
+.slot span{display:block;height:34px;padding-top:8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:600}
+.slot.yours .hole{border-style:solid;border-color:var(--red);color:var(--red);background:var(--red-soft)}
+.slot.yours a{position:absolute;inset:0;z-index:2}
+@media (max-width:820px){.spread{grid-template-columns:1fr 1fr}}
+
+/* команда */
+.team{background:var(--paper-2)}
+.team-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);align-items:center}
+.roles{list-style:none;margin-top:28px;border-top:1px solid var(--line)}
+.roles li{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);font-size:16px}
+.roles b{font-family:var(--serif);font-weight:400;font-size:20px;white-space:nowrap}
+.roles span{color:var(--ink-2);text-align:right}
+.curator{background:var(--card);border:1px solid var(--line);padding:clamp(26px,4vw,44px);position:relative;rotate:1.2deg;box-shadow:0 30px 60px -34px rgba(35,28,23,.5)}
+.curator .av{width:84px;height:84px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-size:30px;margin-bottom:20px}
+.curator h3{font-size:clamp(26px,3vw,34px);margin:4px 0 10px}
+.curator p{color:var(--ink-2)}
+.curator .hand{display:block;margin-top:20px}
+@media (max-width:900px){.team-grid{grid-template-columns:1fr}.roles li{flex-direction:column;gap:2px}.roles span{text-align:left}}
+
+/* участвовать */
+.join{background:var(--red);color:#fff;text-align:center;overflow:hidden}
+.join::before,.join::after{content:"";position:absolute;left:0;right:0;height:28px;background:var(--ornament) repeat-x center/64px 28px;filter:brightness(0) invert(1);opacity:.28}
+.join::before{top:22px}.join::after{bottom:22px}
+.join .kicker{color:#FFD9CC}
+.join h2{font-size:clamp(36px,6vw,76px);max-width:16ch;margin-inline:auto}
+.join .lead{color:rgba(255,255,255,.88);margin:22px auto 34px}
+.join .btn{background:#fff;color:var(--red-dark)}
+.join .btn:hover{background:var(--cream)}
+.ways{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:54px;text-align:left}
+.ways li{border-top:1px solid rgba(255,255,255,.4);padding-top:18px}
+.ways b{font-family:var(--serif);font-weight:400;font-size:22px;display:block;margin-bottom:6px}
+.ways span{color:rgba(255,255,255,.82);font-size:16px}
+.promise{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;margin-top:44px;font-family:var(--hand);font-size:25px;line-height:1.1;color:#FFE6DC}
+@media (max-width:820px){.ways{grid-template-columns:1fr}}
+
+footer{padding:44px 0 40px;font-size:14px;color:var(--ink-2);position:relative;z-index:2}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px}
+.foot b{font-family:var(--serif);font-weight:400;font-size:20px;color:var(--ink);display:block;margin-bottom:4px}
+
+/* движение: скрываем элементы только когда библиотека загрузилась */
+.js-motion [data-reveal],.js-motion [data-stagger]>*,.js-motion [data-hero]{opacity:0}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Память семьи — в начало страницы">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><path fill="#9B2318" d="M17 0l17 17-17 17L0 17z"/><path fill="#F3ECDD" d="M17 7l10 10-10 10L7 17z"/><path fill="#9B2318" d="M17 12l5 5-5 5-5-5z"/></svg>
+      <span>Память семьи<small>Коммунаровская школа</small></span>
+    </a>
+    <button class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <ul class="menu" id="menu">
+      <li><a href="#why">Зачем</a></li>
+      <li><a href="#how">Как это будет</a></li>
+      <li><a href="#ask">О чём спросить</a></li>
+      <li><a href="#keep">Что останется</a></li>
+      <li><a href="#stories">Истории</a></li>
+      <li><a href="#team">Кто мы</a></li>
+      <li><a class="go" href="#join">Рассказать историю</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker" data-hero>записываем истории наших семей</span>
+      <h1 data-hero>Пока есть<br>у кого <em>спросить<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path id="underline" pathLength="1" d="M4 12 C 60 2, 110 18, 160 9 S 250 4, 296 11"/></svg></em></h1>
+      <p class="lead" data-hero>Мы, старшеклассники Коммунаровской школы, приходим к бабушкам, дедушкам и старожилам агрогородка, слушаем и записываем. Чтобы то, что помнят они, осталось и у нас — в книге, в голосе, на фотографиях.</p>
+      <div class="actions" data-hero>
+        <a class="btn btn-red" href="#join">Рассказать историю семьи<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-line" href="#ask">О чём спросить бабушку</a>
+      </div>
+      <p class="proj" data-hero><b>«Молодежь Беларуси хранит память семьи»</b> — проект учеников и первичной организации БРСМ Коммунаровской средней школы. Идёт с ноября по апрель.</p>
+    </div>
+
+    <!-- Чтобы поставить настоящие снимки, замените <svg>…</svg> внутри .ph на <img src="foto.jpg" alt="…"> -->
+    <div class="album" aria-hidden="true">
+      <div class="float f1" data-depth="70"><figure class="photo" data-photo><i class="tape"></i>
+        <div class="ph"><svg viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice"><rect width="200" height="250" fill="#b79f7c"/><rect y="170" width="200" height="80" fill="#8d7556"/><path d="M0 60h200v6H0z" fill="#a58c69"/><g fill="#3d2f22"><circle cx="62" cy="96" r="19"/><path d="M34 250v-96c0-22 12-34 28-34s28 12 28 34v96z"/><circle cx="138" cy="90" r="20"/><path d="M106 250v-98c0-24 14-36 32-36s32 12 32 36v98z"/></g><g fill="#5a4634"><circle cx="100" cy="150" r="14"/><path d="M80 250v-62c0-16 9-24 20-24s20 8 20 24v62z"/></g><path d="M120 86c4-16 30-18 38-2-10-6-28-6-38 2z" fill="#d9c7a6"/></svg></div>
+        <figcaption>наши, 1956 год</figcaption></figure></div>
+      <div class="float f2" data-depth="130"><figure class="photo" data-photo>
+        <div class="ph"><svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><rect width="200" height="200" fill="#a48a66"/><path d="M28 150L100 36l72 114z" fill="#e6d7b8"/><path d="M28 150L100 96l72 54z" fill="#d3c19d"/><path d="M100 36v60" stroke="#b9a37d" stroke-width="2"/><g stroke="#6d5a43" stroke-width="2" stroke-linecap="round"><path d="M76 124h40M70 134h34"/></g><circle cx="138" cy="126" r="13" fill="none" stroke="#7a2a1e" stroke-width="2.5"/><path d="M130 126h16M138 118v16" stroke="#7a2a1e" stroke-width="2"/></svg></div>
+        <figcaption>письмо-треугольник</figcaption></figure></div>
+      <div class="float f3" data-depth="40"><figure class="photo" data-photo><i class="tape"></i>
+        <div class="ph"><svg viewBox="0 0 250 200" preserveAspectRatio="xMidYMid slice"><rect width="250" height="200" fill="#c2ab87"/><rect y="140" width="250" height="60" fill="#8f7757"/><circle cx="52" cy="92" r="34" fill="#6f5b43"/><rect x="48" y="110" width="8" height="40" fill="#4a3a2a"/><path d="M84 96l52-40 52 40z" fill="#4a3a2a"/><rect x="94" y="96" width="84" height="54" fill="#e0cfae"/><g fill="#6f5b43"><rect x="106" y="108" width="20" height="22"/><rect x="146" y="108" width="20" height="22"/></g><path d="M116 108v22M106 119h20M156 108v22M146 119h20" stroke="#e0cfae" stroke-width="2"/><g stroke="#4a3a2a" stroke-width="3"><path d="M186 150v-22M200 150v-22M214 150v-22M228 150v-22M242 150v-22M180 134h70"/></g><rect x="160" y="42" width="10" height="20" fill="#4a3a2a"/></svg></div>
+        <figcaption>дом, где выросла бабушка</figcaption></figure></div>
+      <div class="note" data-photo><svg viewBox="0 0 56 36"><path d="M52 6C40 2 20 6 8 26M8 26l1-11M8 26l11-2"/></svg>подпишите,<br>кто на фото!</div>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"></div>
+
+<section id="why" class="why">
+  <div class="wrap why-grid">
+    <div class="sticky" data-reveal>
+      <span class="kicker">зачем мы это делаем</span>
+      <h2>Историю семьи не найти в учебнике. <span>Её можно только услышать.</span></h2>
+      <p class="lead">Те, кто помнит войну и послевоенные годы, уходят. Вместе с ними уходит то, что нигде не записано: как звали прадеда, откуда приехала семья, кто на этой фотографии.</p>
+    </div>
+    <div class="cards" data-stagger>
+      <article class="idx"><small>первое</small><h3>Спросить скоро будет не у кого</h3><p>Воспоминания о войне и о том, как жили после неё, чаще всего существуют только в устных рассказах. Не записали — значит, потеряли.</p></article>
+      <article class="idx"><small>второе</small><h3>Мы редко спрашиваем</h3><p>Многие из нас не знают имён своих прадедов. Не потому, что неинтересно — просто никто не начинал этот разговор.</p></article>
+      <article class="idx"><small>третье</small><h3>Фотографии молчат</h3><p>Снимки, письма и награды лежат в шкафах неподписанными. Пройдёт время — и никто не скажет, кто на них и когда это было.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <span class="kicker">как это будет</span>
+      <h2>От разговора на кухне — до книги</h2>
+      <p class="lead">Истории записывают сами школьники, чаще всего у собственных бабушек и дедушек. Это не опрос и не анкета, а обычный долгий разговор.</p>
+    </div>
+    <div class="path" id="path">
+      <svg class="thread" viewBox="0 0 120 1200" preserveAspectRatio="none" aria-hidden="true">
+        <path class="bg" d="M60 0C112 100 8 200 60 300S112 500 60 600 8 800 60 900s52 200 0 300"/>
+        <path class="fg" id="thread" pathLength="1" d="M60 0C112 100 8 200 60 300S112 500 60 600 8 800 60 900s52 200 0 300"/>
+      </svg>
+      <ol class="stops">
+        <li class="stop" data-reveal><div class="txt"><h3>Приходим в гости</h3><p>Договариваемся заранее и приходим, когда вам удобно. Можно дома, можно в школе.</p></div><span class="dot">1</span><span class="aside">чай и альбом с фотографиями приветствуются</span></li>
+        <li class="stop" data-reveal><div class="txt"><h3>Слушаем и записываем</h3><p>Включаем диктофон только с вашего согласия. Рассказывайте, как привыкли: мы не перебиваем.</p></div><span class="dot">2</span><span class="aside">о чём не хотите говорить — не спрашиваем</span></li>
+        <li class="stop" data-reveal><div class="txt"><h3>Снимаем копии</h3><p>Сканируем фотографии, письма, документы и награды и вместе подписываем их.</p></div><span class="dot">3</span><span class="aside">оригиналы остаются у вас дома</span></li>
+        <li class="stop" data-reveal><div class="txt"><h3>Показываем текст</h3><p>Записываем рассказ на бумагу и приносим вам прочитать. Что-то не так — исправим.</p></div><span class="dot">4</span><span class="aside">без вашего «да» ничего не печатаем</span></li>
+        <li class="stop" data-reveal><div class="txt"><h3>Издаём книгу</h3><p>Истории семей агрогородка собираем в книгу «Память семьи» — бумажную и электронную.</p></div><span class="dot">5</span><span class="aside">экземпляр — каждой семье</span></li>
+        <li class="stop" data-reveal><div class="txt"><h3>Встречаемся все вместе</h3><p>Весной устроим выставку и вечер для семей, ветеранов и всех жителей.</p></div><span class="dot">6</span><span class="aside">накануне Дня Победы</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="ask" class="ask">
+  <div class="wrap ask-grid">
+    <div data-reveal>
+      <span class="kicker">попробуйте сегодня</span>
+      <h2>О чём спросить бабушку?</h2>
+      <p class="lead" style="margin-top:18px">Чтобы начать, не нужно ждать нас. Вытяните карточку и задайте этот вопрос сегодня вечером — по телефону или за ужином.</p>
+      <div class="tabs" role="group" aria-label="Тема вопросов" id="tabs"></div>
+    </div>
+    <div class="deck" data-reveal>
+      <div class="qcard" id="qcard">
+        <span class="cat" id="qcat"></span>
+        <p class="qt" id="qtext" aria-live="polite"></p>
+        <div class="row">
+          <button class="btn btn-red" id="qnext" type="button">Другой вопрос<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <span class="cnt" id="qcnt"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="wrap quiz-grid">
+    <div data-reveal>
+      <span class="kicker">проверьте себя</span>
+      <h2>А вы знаете историю своей семьи?</h2>
+      <p class="lead" style="margin-top:18px">Пять честных ответов. Если хотя бы один из них «нет» — есть повод для разговора.</p>
+    </div>
+    <div data-reveal>
+      <div class="quiz">
+        <div class="q"><p>Я знаю имена своих прадедов и прабабушек.</p><div class="yn" role="group" aria-label="Ответ"><button type="button" class="y" aria-pressed="false">Да</button><button type="button" class="n" aria-pressed="false">Нет</button></div></div>
+        <div class="q"><p>Я знаю, где были мои родные в годы войны.</p><div class="yn" role="group" aria-label="Ответ"><button type="button" class="y" aria-pressed="false">Да</button><button type="button" class="n" aria-pressed="false">Нет</button></div></div>
+        <div class="q"><p>Я могу назвать всех на старых семейных фото.</p><div class="yn" role="group" aria-label="Ответ"><button type="button" class="y" aria-pressed="false">Да</button><button type="button" class="n" aria-pressed="false">Нет</button></div></div>
+        <div class="q"><p>В нашей семье есть традиции, которые передаются из поколения в поколение.</p><div class="yn" role="group" aria-label="Ответ"><button type="button" class="y" aria-pressed="false">Да</button><button type="button" class="n" aria-pressed="false">Нет</button></div></div>
+        <div class="q"><p>Я расспрашивал(а) бабушку или дедушку об их детстве.</p><div class="yn" role="group" aria-label="Ответ"><button type="button" class="y" aria-pressed="false">Да</button><button type="button" class="n" aria-pressed="false">Нет</button></div></div>
+      </div>
+      <div class="quiz-foot"><button class="btn btn-line" id="quizBtn" type="button">Узнать результат</button><span class="err" id="quizErr" role="alert"></span></div>
+      <div class="result" id="quizRes" aria-live="polite"><h3 id="resTitle"></h3><p id="resText"></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="keep" class="keep">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <span class="kicker">что останется</span>
+      <h2>Рассказ, который можно взять в руки</h2>
+      <p class="lead">Каждая история останется сразу в нескольких местах — у вас дома, в школе и на карте агрогородка.</p>
+    </div>
+    <div class="bento" data-stagger>
+      <article class="cell c-book">
+        <h3>Книга «Память семьи»</h3>
+        <p>Истории семей агрогородка под одной обложкой: рассказы, фотографии, письма. Бумажная — на полку, электронная — чтобы отправить родным в другой город.</p>
+        <div class="book" aria-hidden="true"><small>Коммунаровская школа</small><b>Память семьи</b><i></i></div>
+      </article>
+      <article class="cell c-voice">
+        <h3>Живой голос</h3>
+        <p>На выставке рядом с фотографией будет QR-код: наведите телефон и услышите рассказчика.</p>
+        <div class="art" aria-hidden="true">
+          <div class="wave" id="wave"></div>
+          <div class="qrrow"><div class="qr"><svg viewBox="0 0 7 7" shape-rendering="crispEdges"><path fill="#FFFBF2" d="M0 0h3v3H0zM4 0h3v3H4zM0 4h3v3H0zM4 4h1v1H4zM6 4h1v1H6zM5 5h1v1H5zM4 6h1v1H4zM6 6h1v1H6z"/><path fill="#231C17" d="M1 1h1v1H1zM5 1h1v1H5zM1 5h1v1H1z"/></svg></div><span>наведите курсор —<br>запись «оживёт»</span></div>
+        </div>
+      </article>
+      <article class="cell c-map">
+        <h3>Карта памяти</h3>
+        <p>Каждую историю отмечаем на карте агрогородка. Улица за улицей складывается память всего посёлка.</p>
+        <div class="art" aria-hidden="true">
+          <svg class="mapsvg" viewBox="0 0 400 150"><g fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"><path d="M-10 104C80 84 150 122 240 92s120-22 180-42"/><path d="M96-10c-8 50 18 90 4 170M282-10c12 60-20 96-6 170"/><path d="M96 46c60-14 120 4 188-10"/></g><path d="M-10 132c90-22 200 14 420-30v60H-10z" fill="#C9D2B0" opacity=".7"/><g fill="#D8C8A6"><rect x="30" y="34" width="34" height="22" rx="2"/><rect x="128" y="62" width="40" height="18" rx="2"/><rect x="196" y="14" width="30" height="20" rx="2"/><rect x="318" y="78" width="38" height="22" rx="2"/><rect x="330" y="20" width="28" height="18" rx="2"/></g>
+          <g fill="#9B2318"><g class="pin" style="--i:0"><path d="M48 30c-8-10-12-15-12-21a12 12 0 0124 0c0 6-4 11-12 21z"/><circle cx="48" cy="9" r="4.5" fill="#FFFBF2"/></g><g class="pin" style="--i:1"><path d="M150 60c-8-10-12-15-12-21a12 12 0 0124 0c0 6-4 11-12 21z"/><circle cx="150" cy="39" r="4.5" fill="#FFFBF2"/></g><g class="pin" style="--i:2"><path d="M246 108c-8-10-12-15-12-21a12 12 0 0124 0c0 6-4 11-12 21z"/><circle cx="246" cy="87" r="4.5" fill="#FFFBF2"/></g><g class="pin" style="--i:3"><path d="M340 74c-8-10-12-15-12-21a12 12 0 0124 0c0 6-4 11-12 21z"/><circle cx="340" cy="53" r="4.5" fill="#FFFBF2"/></g></g></svg>
+        </div>
+      </article>
+      <article class="cell c-museum">
+        <h3>Школьный музей</h3>
+        <p>Копии снимков, записи и тексты передадим в музей школы. Те, кто придёт учиться после нас, смогут продолжить летопись.</p>
+        <div class="art" aria-hidden="true"><div class="shelf"><i style="--w:18;--h:78;--c:#9B2318"></i><i style="--w:12;--h:92"></i><i style="--w:22;--h:64;--c:#E8D9B8"></i><i style="--w:14;--h:86;--c:#7d6a52"></i><i style="--w:18;--h:72"></i><i style="--w:10;--h:96;--c:#9B2318"></i><i style="--w:24;--h:58;--c:#E8D9B8"></i><i style="--w:14;--h:82"></i><i style="--w:18;--h:90;--c:#7d6a52"></i><i style="--w:12;--h:68;--c:#E8D9B8"></i><i style="--w:20;--h:84;--c:#9B2318"></i><i style="--w:14;--h:74"></i></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="when">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <span class="kicker">когда</span>
+      <h2>Зимой слушаем, весной показываем</h2>
+      <p class="lead">Долгие зимние вечера — лучшее время для разговоров. А к маю истории вернутся к вам уже книгой.</p>
+    </div>
+    <ol class="seasons" id="seasons" data-stagger>
+      <li class="season" data-from="2026-11" data-to="2026-11"><div class="when">Ноябрь</div><span class="state"></span><p>Знакомимся с семьями и учимся брать интервью.</p></li>
+      <li class="season" data-from="2026-12" data-to="2027-02"><div class="when">Декабрь — февраль</div><span class="state"></span><p>Ходим в гости, записываем рассказы, сканируем снимки и письма.</p></li>
+      <li class="season" data-from="2027-03" data-to="2027-03"><div class="when">Март</div><span class="state"></span><p>Сверяем тексты с рассказчиками и собираем книгу.</p></li>
+      <li class="season" data-from="2027-04" data-to="2027-04"><div class="when">Апрель</div><span class="state"></span><p>Книга, выставка и общий вечер для всех семей.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="stories" style="padding-top:0">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <span class="kicker">истории</span>
+      <h2>Альбом агрогородка</h2>
+      <p class="lead">Страницы пока пустые. Они будут заполняться по мере того, как мы записываем рассказы. Одна из них может быть вашей.</p>
+    </div>
+    <!-- Когда появится история: замените содержимое .hole на <img> и подпись в <span> -->
+    <div class="spread" data-stagger>
+      <div class="slot"><div class="hole">здесь будет первая история</div><span>скоро</span></div>
+      <div class="slot"><div class="hole">письма и награды из семейного архива</div><span>скоро</span></div>
+      <div class="slot"><div class="hole">как строился и жил наш агрогородок</div><span>скоро</span></div>
+      <div class="slot yours"><div class="hole">место для вашей семьи</div><span>рассказать →</span><a href="#join" aria-label="Рассказать историю своей семьи"></a></div>
+    </div>
+  </div>
+</section>
+
+<section id="team" class="team">
+  <div class="wrap team-grid">
+    <div data-reveal>
+      <span class="kicker">кто мы</span>
+      <h2>Десять старшеклассников и учитель истории</h2>
+      <p class="lead" style="margin-top:18px">Мы учимся в 10 и 11 классах Коммунаровской школы. В агрогородке нас знают — многие придут записывать рассказ к собственным родным.</p>
+      <ul class="roles">
+        <li><b>Слушают</b><span>приходят в гости, записывают и расшифровывают рассказы</span></li>
+        <li><b>Сохраняют</b><span>сканируют фотографии, письма, документы и награды</span></li>
+        <li><b>Рассказывают</b><span>ведут страницу проекта, снимают фото и видео</span></li>
+        <li><b>Собирают книгу</b><span>редактируют тексты, верстают книгу, оформляют выставку</span></li>
+      </ul>
+    </div>
+    <aside class="curator" id="curator" data-reveal>
+      <i class="tape" aria-hidden="true"></i>
+      <div class="av" aria-hidden="true">АС</div>
+      <span class="hand">к кому обратиться</span>
+      <h3>Андрей Викторович Судаков</h3>
+      <p>Куратор проекта, учитель истории Коммунаровской средней школы, секретарь первичной организации БРСМ. Его можно найти в школе в учебные дни.</p>
+      <span class="hand">приходите — выслушаем и запишем</span>
+    </aside>
+  </div>
+</section>
+
+<section id="join" class="join">
+  <div class="wrap">
+    <div data-reveal>
+      <span class="kicker">ваша очередь</span>
+      <h2>Расскажите историю своей семьи</h2>
+      <p class="lead">Есть что вспомнить, лежат старые снимки или письма? Мы придём, выслушаем и бережно запишем. Особенно ждём тех, кто помнит войну и первые послевоенные годы.</p>
+      <a class="btn" href="#curator">Как с нами связаться<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <ul class="ways" data-stagger>
+      <li><b>Зайдите в школу</b><span>Спросите Андрея Викторовича Судакова, учителя истории.</span></li>
+      <li><b>Скажите школьникам</b><span>Любой ученик 10–11 класса передаст нам, что вы готовы рассказать.</span></li>
+      <li><b>Напишите нам</b><span>На страницу проекта в социальных сетях — ответим и договоримся о встрече.</span></li>
+    </ul>
+    <p class="promise" data-reveal><span>оригиналы остаются у вас</span><span>только с вашего согласия</span><span>текст покажем перед печатью</span></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><b>Молодежь Беларуси хранит память семьи</b>ГУО «Коммунаровская средняя школа» · первичная организация ОО «БРСМ»</div>
+    <div>Проект учащихся 10–11 классов · 2026–2027 учебный год</div>
+  </div>
+</footer>
+
+<!-- Библиотека анимаций Motion (MIT). Лежит рядом со страницей; если файла нет — берётся из сети, без неё сайт тоже работает. -->
+<script src="motion.js" onerror="document.write('<script src=&quot;https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js&quot;><\/script>')"></script>
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var M=(!reduce&&window.Motion)||null;
+  var EASE=[.22,1,.36,1],SPRING={type:'spring',stiffness:300,damping:20};
+
+  /* шапка и меню */
+  var header=$('#top');
+  addEventListener('scroll',function(){header.classList.toggle('scrolled',scrollY>8)},{passive:true});
+  var burger=$('.burger'),menu=$('#menu');
+  function setMenu(o){menu.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Закрыть меню':'Открыть меню')}
+  burger.addEventListener('click',function(){setMenu(!menu.classList.contains('open'))});
+  $$('a',menu).forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+  addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+
+  /* волна «голоса» */
+  var wave=$('#wave'),hs=[30,55,80,45,95,60,35,70,100,50,75,40,90,55,30,65,85,45,60,35];
+  hs.forEach(function(h,i){var b=document.createElement('i');b.style.setProperty('--h',h);b.style.setProperty('--i',i);wave.appendChild(b)});
+
+  /* карточки с вопросами */
+  var Q={
+    'Детство':['Какой была твоя улица, когда ты была маленькой?','Во что вы играли во дворе?','Что готовили дома по праздникам?','Кем ты мечтал стать в детстве?','Какой запах сразу возвращает тебя в детство?','Как выглядел твой первый школьный день?'],
+    'Война и после':['Что в нашей семье рассказывали о войне?','Кто из наших родных воевал и где?','Как жили в деревне, когда война закончилась?','Сохранились ли письма или награды? Чьи они?','Что ты помнишь о первом мирном празднике?','Кого из семьи мы потеряли в те годы?'],
+    'Семья':['Как вы познакомились с дедушкой?','В честь кого меня назвали?','Как звали твоих бабушку и дедушку?','Какая у нас самая старая семейная вещь?','Какой совет родителей ты помнишь до сих пор?','Кто на этой фотографии и когда её сделали?'],
+    'Наш агрогородок':['Каким был посёлок, когда ты сюда приехала?','Что стояло на месте нашей школы?','Где раньше собиралась молодёжь?','Кого из односельчан здесь помнят и почему?','Какой праздник отмечали всем селом?','Что здесь изменилось сильнее всего?']
+  };
+  var cats=Object.keys(Q),cur=cats[0],seen={},n=0;
+  var tabs=$('#tabs'),qcard=$('#qcard'),qtext=$('#qtext'),qcat=$('#qcat'),qcnt=$('#qcnt');
+  cats.forEach(function(c){
+    var b=document.createElement('button');b.type='button';b.className='tab';b.textContent=c;b.setAttribute('aria-pressed',c===cur);
+    b.addEventListener('click',function(){cur=c;$$('.tab',tabs).forEach(function(x){x.setAttribute('aria-pressed',x===b)});deal()});
+    tabs.appendChild(b);
+  });
+  function pick(){
+    var list=Q[cur],s=seen[cur]||(seen[cur]=[]);
+    if(s.length===list.length)s.length=0;
+    var i;do{i=Math.floor(Math.random()*list.length)}while(s.indexOf(i)>-1);
+    s.push(i);return list[i];
+  }
+  function fill(){n++;qcat.textContent=cur;qtext.textContent=pick();qcnt.textContent='Вытянуто карточек: '+n}
+  function deal(){
+    if(!M){fill();return}
+    var out=M.animate(qcard,{opacity:[1,0],x:[0,-40],rotate:[0,-5]},{duration:.18,easing:'ease-in'});
+    var next=function(){fill();M.animate(qcard,{opacity:[0,1],x:[50,0],rotate:[5,0]},SPRING)};
+    var pr=out&&(out.finished||out);if(pr&&pr.then)pr.then(next,next);else setTimeout(next,190);
+  }
+  $('#qnext').addEventListener('click',deal);fill();
+
+  /* проверь себя */
+  var err=$('#quizErr'),res=$('#quizRes');
+  $$('.yn').forEach(function(g){$$('button',g).forEach(function(b){b.addEventListener('click',function(){
+    $$('button',g).forEach(function(x){x.setAttribute('aria-pressed',x===b)});err.textContent='';
+  })})});
+  $('#quizBtn').addEventListener('click',function(){
+    var groups=$$('.yn'),yes=0,done=0;
+    groups.forEach(function(g){var s=$('[aria-pressed="true"]',g);if(s){done++;if(s.classList.contains('y'))yes++}});
+    if(done<groups.length){
+      err.textContent='Ответьте на все вопросы — осталось '+(groups.length-done);res.classList.remove('show');
+      if(M)M.animate(err,{x:[0,-10,10,-10,10,0]},{duration:.4});return;
+    }
+    var t,x;
+    if(yes===5){t='Вы — хранитель семейной памяти';x='Вы знаете историю своей семьи лучше многих. Поделитесь ею: она может войти в книгу «Память семьи».'}
+    else if(yes>=3){t='Вы знаете многое, но не всё';x='Расспросите старших о том, чего ещё не знаете. Карточки с вопросами выше помогут начать разговор.'}
+    else{t='Самое время поговорить со старшими';x='Начните с простого: попросите бабушку или дедушку рассказать о детстве и вместе подпишите старые фотографии.'}
+    $('#resTitle').textContent=t;$('#resText').textContent=x;res.classList.add('show');
+    if(M)M.animate(res,{opacity:[0,1],y:[20,0]},{duration:.5,easing:EASE});
+  });
+
+  /* что сейчас по календарю */
+  var now=new Date(),curM=now.getFullYear()*12+now.getMonth(),seasons=$$('.season'),reached=-1;
+  function ym(s){var p=s.split('-');return (+p[0])*12+(+p[1]-1)}
+  seasons.forEach(function(el,i){
+    var st=$('.state',el),a=ym(el.dataset.from),b=ym(el.dataset.to);
+    if(curM>b){el.classList.add('done');st.textContent='Позади';reached=i+1}
+    else if(curM>=a){el.classList.add('now');st.textContent='Сейчас';reached=i+.5}
+    else st.textContent='Впереди';
+  });
+  var progress=reached<0?0:Math.min(100,reached/seasons.length*100)+'%';
+
+  /* ——— движение ——— */
+  var thread=$('#thread'),underline=$('#underline');
+  if(!M){$('#seasons').style.setProperty('--progress',progress);return}
+  document.documentElement.classList.add('js-motion');
+  var animate=M.animate,inView=M.inView,stagger=M.stagger,scroll=M.scroll;
+
+  // первый экран
+  animate('[data-hero]',{opacity:[0,1],y:[28,0]},{duration:.7,delay:stagger(.09),easing:EASE});
+  underline.classList.add('draw');
+  $$('[data-photo]').forEach(function(el,i){el.style.opacity=0;animate(el,{opacity:[0,1],y:[60,0],scale:[.9,1]},Object.assign({delay:.25+i*.14},SPRING,{stiffness:120,damping:16}))});
+  // параллакс «фотографий» при прокрутке
+  $$('.float').forEach(function(el){scroll(animate(el,{y:[0,-(+el.dataset.depth)]},{easing:'linear'}),{target:$('.hero'),offset:['start start','end start']})});
+
+  // появление блоков
+  $$('[data-reveal]').forEach(function(el){inView(el,function(){animate(el,{opacity:[0,1],y:[50,0]},{duration:.7,easing:EASE})},{amount:.2})});
+  $$('[data-stagger]').forEach(function(g){inView(g,function(){animate([].slice.call(g.children),{opacity:[0,1],y:[40,0]},{duration:.6,delay:stagger(.1),easing:EASE})},{amount:.15})});
+
+  // красная нить «вышивается» по мере прокрутки
+  thread.style.strokeDasharray=1;thread.style.strokeDashoffset=1;
+  scroll(function(v){var pr=typeof v==='number'?v:(v&&v.y?v.y.progress:0);thread.style.strokeDashoffset=Math.max(0,1-pr)},{target:$('#path'),offset:['start 70%','end 60%']});
+  inView('#seasons',function(){$('#seasons').style.setProperty('--progress',progress)},{amount:.4});
+
+  // страховка: ничего не должно остаться невидимым
+  setTimeout(function(){$$('[data-reveal],[data-stagger]>*,[data-hero],[data-photo]').forEach(function(el){
+    var r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0&&getComputedStyle(el).opacity==='0'){el.style.opacity=1;el.style.transform='none'}})},3500);
+})();
+</script>
+</body>
+</html>
