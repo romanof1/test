@@ -52,7 +52,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#08030f">
-    <meta name="description" content="Radio TRP2FM — радио сообщества Trinity GTA. Слушай онлайн 24/7, заказывай треки, скачай приложение и стань ведущим.">
+    <meta name="description" content="Radio TRP2FM — радио проекта Trinity GTA. Слушай онлайн 24/7, заказывай треки, скачай приложение и стань ведущим.">
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -451,9 +451,12 @@
         .my_volumediv { position: relative !important; right: auto !important; left: auto !important; top: auto !important; bottom: auto !important; width: 112px; height: 6px; border-radius: 6px;
             background: rgba(168,85,247,.22) !important; cursor: pointer; user-select: none; -webkit-user-select: none; touch-action: none; }
         .my_volumediv::before { content: ""; position: absolute; left: -8px; right: -8px; top: -14px; bottom: -14px; } /* увеличенная зона нажатия */
-        .my_volume { height: 6px; max-width: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--violet), var(--purple-light)) !important; pointer-events: none; }
-        .my_volumecursor { position: absolute !important; top: -5px !important; width: 16px !important; height: 16px !important; margin-left: -6px; border-radius: 50% !important;
-            background: #fff !important; box-shadow: 0 2px 8px rgba(0,0,0,.5), 0 0 0 4px rgba(168,85,247,.25); cursor: pointer; }
+        .my_volume { position: relative; height: 6px; min-width: 0; max-width: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--violet), var(--purple-light)) !important; pointer-events: none; }
+        /* кружок — часть самой полоски заполнения, поэтому всегда стоит на её конце */
+        .my_volume::after { content: ""; position: absolute; right: -8px; top: 50%; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,.5), 0 0 0 4px rgba(168,85,247,.25); transition: transform .15s; }
+        .my_volumediv:hover .my_volume::after, .my_volumediv.drag .my_volume::after { transform: scale(1.2); }
+        .my_volumecursor { display: none !important; } /* «родной» кружок плеера не двигался за полоской — скрыт */
         .vol-btn { display: none; width: 44px; height: 44px; flex: 0 0 44px; border-radius: 14px; border: 1px solid var(--line); background: var(--glass); color: var(--paper); cursor: pointer; place-items: center; padding: 0; }
         .vol-btn svg { width: 20px; height: 20px; }
         .player.vol-open .vol-btn { border-color: var(--violet-2); background: rgba(139,92,246,.2); }
@@ -496,7 +499,7 @@
             .player.vol-open .show-volume { opacity: 1; visibility: visible; transform: none; transition: opacity .2s, transform .25s var(--ease); }
             .my_volumediv { width: 180px; height: 8px; }
             .my_volume { height: 8px; }
-            .my_volumecursor { top: -6px !important; width: 20px !important; height: 20px !important; margin-left: -8px; }
+            .my_volume::after { width: 22px; height: 22px; margin-top: -11px; right: -11px; }
         }
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
@@ -542,7 +545,7 @@
                     </span>
                 </div>
                 <h1 class="word">TRP2<em>FM</em></h1>
-                <p class="tag">Радио сообщества <b>Trinity GTA</b>. Живые эфиры, музыка круглые сутки и треки по вашим заявкам.</p>
+                <p class="tag">Радио проекта <b>Trinity GTA</b>. Живые эфиры, музыка круглые сутки и треки по вашим заявкам.</p>
 
                 <div class="cta">
                     <button class="btn btn-main" type="button" data-play>
@@ -607,7 +610,7 @@
             <div class="side">
                 <div class="card pane rv" style="--d:.08s">
                     <div class="h2row"><h2>На связи</h2><small>соцсети</small></div>
-                    <p class="about"><b>TRP2FM</b> — радио сообщества Trinity GTA. Слушай любимые треки онлайн, заказывай музыку и оставайся на связи с нами.</p>
+                    <p class="about"><b>TRP2FM</b> — радио проекта Trinity GTA. Слушай любимые треки онлайн, заказывай музыку и оставайся на связи с нами.</p>
                     <div class="freqs">
                         <a href="https://vk.com/radiotrp2fm" target="_blank" rel="noopener"><span class="ico" style="--c:#0077ff"><img src="/imgs/vkicon.png" alt="" onerror="this.parentNode.classList.add('noimg'); this.remove()"><b>VK</b></span><span class="t">ВКонтакте<small>vk.com/radiotrp2fm</small></span><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
                         <a href="https://t.me/trp2fm" target="_blank" rel="noopener"><span class="ico" style="--c:#229ed9"><img src="/imgs/telegramicon.png" alt="" onerror="this.parentNode.classList.add('noimg'); this.remove()"><b>TG</b></span><span class="t">Telegram<small>t.me/trp2fm</small></span><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
@@ -669,7 +672,7 @@
                 </div>
                 <div class="warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2.4 17.500A2 2 0 0 0 4.100 20.500h15.800a2 2 0 0 0 1.700-3L13.700 3.900a2 2 0 0 0-3.400 0z"/></svg>Заявки без демо-записи рассматриваться не будут</div>
                 <button class="btn btn-main" type="button" data-apply>Заполнить анкету радиоведущего</button>
-                <p class="contact">По всем вопросам — в личные сообщения <a href="https://vk.com/radiotrp2fm" target="_blank" rel="noopener">группы TRP2FM ВКонтакте</a>.</p>
+                <p class="contact">По всем вопросам — в личные сообщения <a href="https://vk.com/radiotrp2fm" target="_blank" rel="noopener">группы TRP2FM ВКонтакте</a> или в <a href="https://t.me/trp2fm?direct" target="_blank" rel="noopener">директ Telegram-канала</a>.</p>
             </div>
             <div class="card rv" style="--d:.08s">
                 <div class="steps-h">Как подать заявку</div>
@@ -682,7 +685,7 @@
         </div>
     </section>
 
-    <footer class="wrap site-footer"><span><?php echo $COPY; ?></span><span>Радио сообщества Trinity GTA</span></footer>
+    <footer class="wrap site-footer"><span><?php echo $COPY; ?></span><span>Радио проекта Trinity GTA</span></footer>
 </div>
 
 <!-- АНКЕТА: отправляется в Google Forms через скрытый iframe, страница не перезагружается -->
@@ -926,6 +929,21 @@
     function setVol(open){ dock.classList.toggle('vol-open', open); volBtn.setAttribute('aria-expanded', String(open)); }
     volBtn.addEventListener('click', function(e){ e.stopPropagation(); setVol(!dock.classList.contains('vol-open')); });
     document.addEventListener('click', function(e){ if (dock.classList.contains('vol-open') && !e.target.closest('.show-volume')) setVol(false); });
+    /* перетаскивание: плеер меняет громкость по клику, поэтому при движении с зажатой кнопкой шлём ему клики */
+    (function(){
+        var bar = null;
+        function clickAt(x){
+            var r = bar.getBoundingClientRect(); x = Math.min(r.right - 1, Math.max(r.left + 1, x));
+            bar.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window, clientX: x, clientY: r.top + r.height / 2, button: 0 }));
+        }
+        document.addEventListener('mousedown', function(e){
+            var b = e.target.closest && e.target.closest('.my_volumediv');
+            if (!b || e.button !== 0) return;
+            bar = b; bar.classList.add('drag'); if (e.isTrusted) e.preventDefault();
+        });
+        document.addEventListener('mousemove', function(e){ if (bar) clickAt(e.clientX); });
+        document.addEventListener('mouseup', function(){ if (bar) { bar.classList.remove('drag'); bar = null; } });
+    })();
     /* палец → мышь: регулятор громкости плеера рассчитан на мышь, поэтому касания переводим в события мыши */
     (function(){
         var active = null;
